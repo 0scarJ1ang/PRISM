@@ -9,7 +9,7 @@ favicon = "/favicon.svg"
 name = "Oscar Puming Jiang"
 title = "PhD student"
 institution = "National University of Singapore"
-avatar = "/oscar_jiang_portrait.png"
+avatar = "/oscar_jiang_portrait.jpg"
 
 [seo]
 # Machine-readable facts for search engines and AI assistants (JSON-LD, llms.txt). Not shown on the page.
