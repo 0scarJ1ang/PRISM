@@ -1,5 +1,7 @@
-I am a PhD student at the School of Science, University of Example, advised by [Prof. Advisor One](https://example.com) and [Dr. Advisor Two](https://example.com).
+I am a PhD student at the School of Computing, National University of Singapore, advised by [Prof. Harold Soh](https://haroldsoh.com).
 
-Prior to this, I obtained a BSc degree with First Class Honours in Natural Science from the University of Example.
 
-My current research focuses on investigating the mathematical principles of natural philosophy.
+My research focuses on closing the deployment gap of pre-trained robot policies: how can we safely and flexibly use increasingly powerful learned policies in fast-changing, human-centered environments? To address this, I study inference-time steering methods that allow robot policies to adapt their behavior during execution, without retraining the underlying policy. My work explores how generative and streaming robot policies can be guided by dynamic constraints, human preferences, and structured predictions of future consequences.
+
+
+Before joining NUS, I completed a B.A. in Engineering and an M.Eng. at the University of Cambridge, followed by an M.Res. at Imperial College London, where I was fortunate to be supervised by Prof. Nicole Salomons. I received First Class Honours / Distinction across my previous degrees.

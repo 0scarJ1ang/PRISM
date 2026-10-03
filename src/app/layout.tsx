@@ -7,6 +7,10 @@ import { LocaleProvider } from '@/components/ui/LocaleProvider';
 import { getConfig } from '@/lib/config';
 import { getRuntimeI18nConfig } from '@/lib/i18n/config';
 import type { SiteConfig } from '@/lib/config';
+import Script from "next/script";
+
+
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const config = getConfig();
@@ -186,6 +190,29 @@ export default function RootLayout({
             />
           </LocaleProvider>
         </ThemeProvider>
+      
+      <Script
+        src="https://plausible.io/js/pa-Pj_-Cljdo3YsBJ5MLdfdJ.js"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="plausible-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+        __html: `
+          window.plausible = window.plausible || function() {
+          (window.plausible.q = window.plausible.q || []).push(arguments)
+          };
+          window.plausible.init = window.plausible.init || function(i) {
+            window.plausible.o = i || {};
+          };
+          window.plausible.init();
+        `,
+      }}
+      />
+      
+      
+      
       </body>
     </html>
   );
