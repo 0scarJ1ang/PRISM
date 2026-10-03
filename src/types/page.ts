@@ -14,6 +14,11 @@ export interface TextPageConfig extends BasePageConfig {
     source: string;
 }
 
+export interface ProfileOutreach {
+    text: string;
+    email_label?: string;
+}
+
 export interface ResearchTheme {
     title: string;
     description?: string;

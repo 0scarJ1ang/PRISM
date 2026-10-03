@@ -8,6 +8,10 @@ research_interests = [
   "Inference Time Guidance"
 ]
 
+[profile.outreach]
+text = "If you're an undergrad interested in robotics research but unsure where to start, talk to as many people in the field as you can, including me!"
+email_label = "Feel free to email me to arrange a chat."
+
 [[sections]]
 id = "about"
 type = "markdown"

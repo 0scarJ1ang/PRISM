@@ -8,6 +8,15 @@
   font-display: swap;
 }
 
+/* Caveat is bundled locally under the SIL Open Font License. */
+@font-face {
+  font-family: "Caveat";
+  src: url("/fonts/caveat-latin-500.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
 /* Explicitly set dark mode to use class strategy */
 @variant dark (&:where(.dark, .dark *));
 
@@ -87,6 +96,7 @@
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-serif: 'Georgia CDN', Georgia, serif;
+  --font-handwritten: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
   --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
   
   /* Font sizes */

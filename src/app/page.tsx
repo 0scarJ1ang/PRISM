@@ -4,7 +4,7 @@ import { getMarkdownContent, getBibtexContent, getTomlContent, getPageConfig } f
 import { parseBibTeX } from '@/lib/bibtexParser';
 import HomePageClient, { type HomePageLocaleData } from '@/components/home/HomePageClient';
 import { Publication } from '@/types/publication';
-import { BasePageConfig, PublicationPageConfig, TextPageConfig, CardPageConfig, ResearchTheme } from '@/types/page';
+import { BasePageConfig, PublicationPageConfig, TextPageConfig, CardPageConfig, ProfileOutreach, ResearchTheme } from '@/types/page';
 import { getRuntimeI18nConfig } from '@/lib/i18n/config';
 import { buildPageJsonLd } from '@/lib/structuredData';
 import JsonLd from '@/components/ui/JsonLd';
@@ -73,7 +73,7 @@ function loadPageDataForLocale(locale: string | undefined): HomePageLocaleData {
   const localeConfig = getConfig(locale);
   const enableOnePageMode = localeConfig.features.enable_one_page_mode;
 
-  const aboutConfig = getPageConfig<{ profile?: { research_interests?: string[] }; sections?: SectionConfig[] }>('about', locale);
+  const aboutConfig = getPageConfig<{ profile?: { research_interests?: string[]; outreach?: ProfileOutreach }; sections?: SectionConfig[] }>('about', locale);
   const researchInterests = aboutConfig?.profile?.research_interests;
 
   let pagesToShow: PageData[] = [];
@@ -141,6 +141,7 @@ function loadPageDataForLocale(locale: string | undefined): HomePageLocaleData {
     features: localeConfig.features,
     enableOnePageMode,
     researchInterests,
+    outreachNote: aboutConfig?.profile?.outreach,
     pagesToShow,
   };
 }

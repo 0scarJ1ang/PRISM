@@ -13,6 +13,7 @@ import { MapPinIcon as MapPinSolidIcon, EnvelopeIcon as EnvelopeSolidIcon } from
 import { HeartIcon as HeartSolidIcon } from '@heroicons/react/24/solid';
 import { Github, Linkedin, Pin } from 'lucide-react';
 import type { SiteConfig } from '@/lib/config';
+import type { ProfileOutreach } from '@/types/page';
 import { useMessages } from '@/lib/i18n/useMessages';
 
 // Custom ORCID icon component
@@ -32,9 +33,10 @@ interface ProfileProps {
     social: SiteConfig['social'];
     features: SiteConfig['features'];
     researchInterests?: string[];
+    outreachNote?: ProfileOutreach;
 }
 
-export default function Profile({ author, social, features, researchInterests }: ProfileProps) {
+export default function Profile({ author, social, features, researchInterests, outreachNote }: ProfileProps) {
     const messages = useMessages();
 
     const [hasLiked, setHasLiked] = useState(false);
@@ -313,6 +315,22 @@ export default function Profile({ author, social, features, researchInterests }:
                         ))}
                     </div>
                 </div>
+            )}
+
+            {outreachNote?.text && (
+                <p className="mb-6 px-4 font-handwritten text-2xl font-medium leading-snug text-neutral-600">
+                    {outreachNote.text}
+                    {social.email && outreachNote.email_label && (
+                        <>{' '}
+                            <a
+                                href={`mailto:${social.email}`}
+                                className="underline decoration-accent underline-offset-4 hover:decoration-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                            >
+                                {outreachNote.email_label}
+                            </a>
+                        </>
+                    )}
+                </p>
             )}
 
             {/* Like Button */}
