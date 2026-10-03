@@ -1,18 +1,17 @@
 type = "about"
 title = "About"
 
-[profile]
-research_interests = [
-  "Embodied AI",
-  "Robot Policies",
-  "Inference Time Guidance"
-]
-
 [[sections]]
 id = "about"
 type = "markdown"
 source = "bio.md"
 title = "About"
+
+[[sections]]
+id = "research_interests"
+type = "markdown"
+source = "research.md"
+title = "Research Interests"
 
 [[sections]]
 id = "featured_publications"

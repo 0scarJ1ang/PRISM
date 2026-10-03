@@ -37,11 +37,13 @@ export interface Publication {
   quartile?: 'Q1' | 'Q2' | 'Q3' | 'Q4';
   bibtex?: string;
   venue?: string;
+  presentation?: string;
   location?: string;
   awards?: string[];
   featured?: boolean;
   selected?: boolean;
   preview?: string;
+  previewVideo?: string;
   summary?: string;
   researchArea: ResearchArea;
   description?: string;

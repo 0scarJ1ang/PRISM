@@ -78,6 +78,8 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       // Optional fields
       journal: cleanBibTeXString(tags.journal),
       conference: cleanBibTeXString(tags.booktitle),
+      venue: cleanBibTeXString(tags.venue),
+      presentation: cleanBibTeXString(tags.presentation),
       volume: tags.volume,
       issue: tags.number,
       pages: tags.pages,
@@ -89,9 +91,10 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       description: cleanBibTeXString(tags.description || tags.note),
       selected,
       preview,
+      previewVideo: tags.previewvideo?.replace(/[{}]/g, ''),
 
       // Keep abstracts available on the page, but omit them from copyable citations.
-      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code', 'abstract']),
+      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'previewvideo', 'description', 'keywords', 'code', 'abstract', 'venue', 'presentation']),
     };
 
     // Clean up undefined fields

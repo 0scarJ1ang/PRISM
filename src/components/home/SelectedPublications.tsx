@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Publication } from '@/types/publication';
 import { useMessages } from '@/lib/i18n/useMessages';
 import { Github, Globe } from 'lucide-react';
+import PublicationPreview from '@/components/publications/PublicationPreview';
 
 interface SelectedPublicationsProps {
     publications: Publication[];
@@ -41,57 +42,67 @@ export default function SelectedPublications({ publications, title, enableOnePag
                         transition={{ duration: 0.4, delay: 0.1 * index }}
                         className="bg-neutral-50 dark:bg-neutral-800 p-4 rounded-lg shadow-sm border border-neutral-200 dark:border-[rgba(148,163,184,0.24)] hover:shadow-lg transition-all duration-200 hover:scale-[1.02]"
                     >
-                        <h3 className="font-semibold text-primary mb-2 leading-tight">
-                            {pub.title}
-                        </h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-500 mb-1">
-                            {pub.authors.map((author, idx) => (
-                                <span key={idx}>
-                                    <span>
-                                        {author.name}
-                                    </span>
-                                    {author.isCoAuthor && <sup>*</sup>}
-                                    {author.isCorresponding && (
-                                        <sup>†</sup>
+                        <div className="flex flex-col sm:flex-row items-start gap-5">
+                            {pub.preview && (
+                                <PublicationPreview preview={pub.preview} previewVideo={pub.previewVideo} title={pub.title} className="sm:w-48 lg:w-52" />
+                            )}
+                            <div className="min-w-0 flex-1">
+                                <h3 className="font-semibold text-primary mb-2 leading-tight">
+                                    {pub.title}
+                                </h3>
+                                <p className="text-sm text-neutral-600 dark:text-neutral-500 mb-1">
+                                    {pub.authors.map((author, idx) => (
+                                        <span key={idx}>
+                                            <span>
+                                                {author.name}
+                                            </span>
+                                            {author.isCoAuthor && <sup>*</sup>}
+                                            {author.isCorresponding && (
+                                                <sup>†</sup>
+                                            )}
+                                            {idx < pub.authors.length - 1 && ', '}
+                                        </span>
+                                    ))}
+                                </p>
+                                <p className="text-sm text-neutral-600 dark:text-neutral-500 mb-2">
+                                    {pub.venue || pub.journal || pub.conference} {pub.year}
+                                    {pub.presentation && (
+                                        <span className="font-semibold text-accent"> · {pub.presentation}</span>
                                     )}
-                                    {idx < pub.authors.length - 1 && ', '}
-                                </span>
-                            ))}
-                        </p>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-500 mb-2">
-                            {pub.journal || pub.conference}
-                        </p>
-                        {pub.description && (
-                            <p className="text-sm text-neutral-500 dark:text-neutral-500 line-clamp-2">
-                                {pub.description}
-                            </p>
-                        )}
-                        {(pub.url || pub.code) && (
-                            <div className="flex flex-wrap gap-2 mt-3">
-                                {pub.url && (
-                                    <a
-                                        href={pub.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
-                                    >
-                                        <Globe className="h-3 w-3 mr-1.5 shrink-0" aria-hidden="true" />
-                                        {messages.publications.website}
-                                    </a>
+                                </p>
+                                {pub.description && (
+                                    <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                                        {pub.description}
+                                    </p>
                                 )}
-                                {pub.code && (
-                                    <a
-                                        href={pub.code}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
-                                    >
-                                        <Github className="h-3 w-3 mr-1.5 shrink-0" aria-hidden="true" />
-                                        {messages.publications.code}
-                                    </a>
+                                {(pub.url || pub.code) && (
+                                    <div className="flex flex-wrap gap-2 mt-3">
+                                        {pub.url && (
+                                            <a
+                                                href={pub.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
+                                            >
+                                                <Globe className="h-3 w-3 mr-1.5 shrink-0" aria-hidden="true" />
+                                                {messages.publications.website}
+                                            </a>
+                                        )}
+                                        {pub.code && (
+                                            <a
+                                                href={pub.code}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
+                                            >
+                                                <Github className="h-3 w-3 mr-1.5 shrink-0" aria-hidden="true" />
+                                                {messages.publications.code}
+                                            </a>
+                                        )}
+                                    </div>
                                 )}
                             </div>
-                        )}
+                        </div>
                     </motion.div>
                 ))}
             </div>
