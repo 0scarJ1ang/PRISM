@@ -32,6 +32,7 @@ export interface SiteConfig {
     alternate_names?: string[];
     alumni_of?: string[];
     knows_about?: string[];
+    google_site_verification?: string;
   };
   features: {
     enable_likes: boolean;

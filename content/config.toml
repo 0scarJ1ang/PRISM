@@ -16,6 +16,8 @@ avatar = "/oscar_jiang_portrait.jpg"
 alternate_names = ["Puming Jiang", "Oscar Jiang"]
 alumni_of = ["University of Cambridge", "Imperial College London"]
 knows_about = ["Robot Learning", "Imitation Learning", "Generative Robot Policies", "Inference-Time Guidance", "Structural Priors", "Skill Composition", "Embodied AI"]
+# Google Search Console ownership check: the content="..." value from its HTML tag method.
+google_site_verification = "aLSjp_YCoErw0JgOhe7-SfFHD6SKjpC-JsXU3JaZCbw"
 
 [social]
 # Contact information (leave blank or delete to hide)

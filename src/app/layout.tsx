@@ -33,6 +33,9 @@ export async function generateMetadata(): Promise<Metadata> {
     icons: {
       icon: config.site.favicon,
     },
+    verification: config.seo?.google_site_verification
+      ? { google: config.seo.google_site_verification }
+      : undefined,
     openGraph: {
       type: 'website',
       locale: openGraphLocale,
