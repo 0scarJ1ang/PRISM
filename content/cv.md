@@ -17,13 +17,6 @@
 
 
 
-## Skills
-
-- **Programming:** Python, MATLAB, C++, LaTeX  
-- **Machine Learning / Robotics:** PyTorch, TensorFlow, NumPy, PyTorch3D  
-- **Research Areas:** Robot learning, generative policies, inference-time steering, human-robot interaction  
-- **Languages:** English, Chinese
-
 ## Awards & Honors
 
 
@@ -36,8 +29,7 @@
 - Teaching Assistant, CS5340: Uncertainty Modelling, National University of Singapore
 
 **Reviewer**  
-- IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026
-- ACM/IEEE International Conference on Human-Robot Interaction (HRI) 2024
+- HRI, IROS, ICRA
 
 
 

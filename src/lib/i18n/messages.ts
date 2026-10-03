@@ -41,6 +41,7 @@ export interface LocaleMessages {
     abstract: string;
     bibtex: string;
     code: string;
+    website: string;
     arxiv: string;
   };
   footer: {
@@ -91,7 +92,8 @@ const en: LocaleMessages = {
     noResults: 'No publications found matching your criteria.',
     abstract: 'Abstract',
     bibtex: 'BibTeX',
-    code: 'Code',
+    code: 'GitHub',
+    website: 'Website',
     arxiv: 'arXiv',
   },
   footer: {
@@ -142,7 +144,8 @@ const zh: LocaleMessages = {
     noResults: '没有找到符合条件的论文。',
     abstract: '摘要',
     bibtex: 'BibTeX',
-    code: '代码',
+    code: 'GitHub',
+    website: '项目主页',
     arxiv: 'arXiv',
   },
   footer: {

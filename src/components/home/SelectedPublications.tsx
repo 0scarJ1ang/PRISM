@@ -46,11 +46,12 @@ export default function SelectedPublications({ publications, title, enableOnePag
                         <p className="text-sm text-neutral-600 dark:text-neutral-500 mb-1">
                             {pub.authors.map((author, idx) => (
                                 <span key={idx}>
-                                    <span className={`${author.isHighlighted ? 'font-semibold text-accent' : ''} ${author.isCoAuthor ? `underline underline-offset-4 ${author.isHighlighted ? 'decoration-accent' : 'decoration-neutral-400'}` : ''}`}>
+                                    <span>
                                         {author.name}
                                     </span>
+                                    {author.isCoAuthor && <sup>*</sup>}
                                     {author.isCorresponding && (
-                                        <sup className={`ml-0 ${author.isHighlighted ? 'text-accent' : 'text-neutral-600 dark:text-neutral-500'}`}>†</sup>
+                                        <sup>†</sup>
                                     )}
                                     {idx < pub.authors.length - 1 && ', '}
                                 </span>
@@ -63,6 +64,30 @@ export default function SelectedPublications({ publications, title, enableOnePag
                             <p className="text-sm text-neutral-500 dark:text-neutral-500 line-clamp-2">
                                 {pub.description}
                             </p>
+                        )}
+                        {(pub.url || pub.code) && (
+                            <div className="flex flex-wrap gap-2 mt-3">
+                                {pub.url && (
+                                    <a
+                                        href={pub.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
+                                    >
+                                        {messages.publications.website}
+                                    </a>
+                                )}
+                                {pub.code && (
+                                    <a
+                                        href={pub.code}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
+                                    >
+                                        {messages.publications.code}
+                                    </a>
+                                )}
+                            </div>
                         )}
                     </motion.div>
                 ))}

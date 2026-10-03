@@ -90,8 +90,8 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       selected,
       preview,
 
-      // Store original BibTeX (excluding custom fields)
-      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code']),
+      // Keep abstracts available on the page, but omit them from copyable citations.
+      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code', 'abstract']),
     };
 
     // Clean up undefined fields
