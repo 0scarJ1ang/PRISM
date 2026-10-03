@@ -7,6 +7,7 @@ import { LocaleProvider } from '@/components/ui/LocaleProvider';
 import { getConfig } from '@/lib/config';
 import { getRuntimeI18nConfig } from '@/lib/i18n/config';
 import type { SiteConfig } from '@/lib/config';
+import { getSiteUrl } from '@/lib/structuredData';
 import Script from "next/script";
 
 
@@ -16,15 +17,17 @@ export async function generateMetadata(): Promise<Metadata> {
   const config = getConfig();
   const runtimeI18n = getRuntimeI18nConfig(config.i18n);
   const openGraphLocale = runtimeI18n.defaultLocale === 'zh' ? 'zh_CN' : 'en_US';
+  const siteUrl = getSiteUrl(config);
 
   return {
+    metadataBase: siteUrl ? new URL(siteUrl) : undefined,
     title: {
       default: config.site.title,
       template: `%s | ${config.site.title}`,
     },
     description: config.site.description,
-    keywords: [config.author.name, 'PhD', 'Research', config.author.institution],
-    authors: [{ name: config.author.name }],
+    keywords: [config.author.name, 'PhD', 'Research', config.author.institution, ...(config.seo?.knows_about ?? [])],
+    authors: [{ name: config.author.name, url: siteUrl ? `${siteUrl}/` : undefined }],
     creator: config.author.name,
     publisher: config.author.name,
     icons: {

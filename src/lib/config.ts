@@ -7,6 +7,7 @@ export interface SiteConfig {
   site: {
     title: string;
     description: string;
+    url?: string;
     favicon: string;
     last_updated?: string;
   };
@@ -26,6 +27,11 @@ export interface SiteConfig {
     github?: string;
     linkedin?: string;
     [key: string]: string | string[] | undefined;
+  };
+  seo?: {
+    alternate_names?: string[];
+    alumni_of?: string[];
+    knows_about?: string[];
   };
   features: {
     enable_likes: boolean;

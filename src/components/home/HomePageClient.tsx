@@ -9,7 +9,7 @@ import TextPage from '@/components/pages/TextPage';
 import CardPage from '@/components/pages/CardPage';
 import type { SiteConfig } from '@/lib/config';
 import { Publication } from '@/types/publication';
-import { CardPageConfig, PublicationPageConfig, TextPageConfig } from '@/types/page';
+import { CardPageConfig, PublicationPageConfig, ResearchTheme, TextPageConfig } from '@/types/page';
 import { useLocaleStore } from '@/lib/stores/localeStore';
 
 interface SectionConfig {
@@ -20,6 +20,7 @@ interface SectionConfig {
   filter?: string;
   limit?: number;
   content?: string;
+  themes?: ResearchTheme[];
   publications?: Publication[];
   items?: NewsItem[];
 }
@@ -76,6 +77,7 @@ export default function HomePageClient({ dataByLocale, defaultLocale }: HomePage
                         key={section.id}
                         content={section.content || ''}
                         title={section.title}
+                        themes={section.themes}
                       />
                     );
                   case 'publications':

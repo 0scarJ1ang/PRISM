@@ -1,7 +1,7 @@
 [site]
 title = "Oscar Puming Jiang"
 description = "PhD student at the National University of Singapore working on robot learning: learning, understanding, and composing robot policies."
-url ="https://Oscarjiang.com"
+url = "https://0scarj1ang.github.io"
 favicon = "/favicon.svg"
 
 
@@ -10,6 +10,12 @@ name = "Oscar Puming Jiang"
 title = "PhD student"
 institution = "National University of Singapore"
 avatar = "/oscar_jiang.jpg"
+
+[seo]
+# Machine-readable facts for search engines and AI assistants (JSON-LD, llms.txt). Not shown on the page.
+alternate_names = ["Puming Jiang", "Oscar Jiang"]
+alumni_of = ["University of Cambridge", "Imperial College London"]
+knows_about = ["Robot Learning", "Imitation Learning", "Generative Robot Policies", "Inference-Time Guidance", "Structural Priors", "Skill Composition", "Embodied AI"]
 
 [social]
 # Contact information (leave blank or delete to hide)

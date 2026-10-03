@@ -1,10 +1,17 @@
+import type { Metadata } from 'next';
 import { getConfig } from '@/lib/config';
 import { getMarkdownContent, getBibtexContent, getTomlContent, getPageConfig } from '@/lib/content';
 import { parseBibTeX } from '@/lib/bibtexParser';
 import HomePageClient, { type HomePageLocaleData } from '@/components/home/HomePageClient';
 import { Publication } from '@/types/publication';
-import { BasePageConfig, PublicationPageConfig, TextPageConfig, CardPageConfig } from '@/types/page';
+import { BasePageConfig, PublicationPageConfig, TextPageConfig, CardPageConfig, ResearchTheme } from '@/types/page';
 import { getRuntimeI18nConfig } from '@/lib/i18n/config';
+import { buildPageJsonLd } from '@/lib/structuredData';
+import JsonLd from '@/components/ui/JsonLd';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
 
 interface SectionConfig {
   id: string;
@@ -14,6 +21,7 @@ interface SectionConfig {
   filter?: string;
   limit?: number;
   content?: string;
+  themes?: ResearchTheme[];
   publications?: Publication[];
   items?: NewsItem[];
 }
@@ -152,5 +160,23 @@ export default function Home() {
     dataByLocale[runtimeI18n.defaultLocale] = loadPageDataForLocale(undefined);
   }
 
-  return <HomePageClient dataByLocale={dataByLocale} defaultLocale={runtimeI18n.defaultLocale} />;
+  const homePublications = dataByLocale[runtimeI18n.defaultLocale].pagesToShow.flatMap((page) => {
+    if (page.type === 'publication') return page.publications;
+    if (page.type === 'about') return page.sections.flatMap((section) => section.publications ?? []);
+    return [];
+  });
+
+  return (
+    <>
+      <JsonLd
+        data={buildPageJsonLd(baseConfig, {
+          path: '/',
+          type: 'ProfilePage',
+          name: baseConfig.site.title,
+          publications: homePublications,
+        })}
+      />
+      <HomePageClient dataByLocale={dataByLocale} defaultLocale={runtimeI18n.defaultLocale} />
+    </>
+  );
 }

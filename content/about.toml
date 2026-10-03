@@ -1,6 +1,13 @@
 type = "about"
 title = "About"
 
+[profile]
+research_interests = [
+  "Embodied AI",
+  "Robot Policies",
+  "Inference Time Guidance"
+]
+
 [[sections]]
 id = "about"
 type = "markdown"
@@ -11,7 +18,15 @@ title = "About"
 id = "research_interests"
 type = "markdown"
 source = "research.md"
-title = "Research Interests"
+title = "Research"
+
+[[sections.themes]]
+title = "Policies That Generalize and Adapt"
+description = "A policy is trained once, but its objectives keep changing after deployment. How can it generalize beyond its demonstrations and adapt to new objectives without retraining?"
+
+[[sections.themes]]
+title = "Policies That Planners Can Understand"
+description = "Planners usually see a skill only through a name or an instruction. How can high-level reasoning understand what a policy can do and where it works, and invoke it correctly?"
 
 [[sections]]
 id = "featured_publications"

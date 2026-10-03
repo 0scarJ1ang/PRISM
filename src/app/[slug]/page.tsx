@@ -12,6 +12,8 @@ import {
 
 import { Metadata } from 'next';
 import { getRuntimeI18nConfig } from '@/lib/i18n/config';
+import { buildPageJsonLd } from '@/lib/structuredData';
+import JsonLd from '@/components/ui/JsonLd';
 
 function loadDynamicPageData(slug: string, locale?: string): DynamicPageLocaleData | null {
   const pageConfig = getPageConfig(slug, locale) as BasePageConfig | null;
@@ -70,6 +72,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: pageConfig.title,
     description: pageConfig.description,
+    alternates: { canonical: `/${slug}/` },
   };
 }
 
@@ -98,5 +101,19 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
-  return <DynamicPageClient dataByLocale={dataByLocale} defaultLocale={runtimeI18n.defaultLocale} />;
+  const pageData = dataByLocale[runtimeI18n.defaultLocale] ?? Object.values(dataByLocale)[0];
+
+  return (
+    <>
+      <JsonLd
+        data={buildPageJsonLd(baseConfig, {
+          path: `/${slug}/`,
+          type: pageData.type === 'publication' ? 'CollectionPage' : 'WebPage',
+          name: `${pageData.config.title} | ${baseConfig.site.title}`,
+          publications: pageData.type === 'publication' ? pageData.publications : [],
+        })}
+      />
+      <DynamicPageClient dataByLocale={dataByLocale} defaultLocale={runtimeI18n.defaultLocale} />
+    </>
+  );
 }

@@ -3,13 +3,15 @@
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import { useMessages } from '@/lib/i18n/useMessages';
+import type { ResearchTheme } from '@/types/page';
 
 interface AboutProps {
     content: string;
     title?: string;
+    themes?: ResearchTheme[];
 }
 
-export default function About({ content, title }: AboutProps) {
+export default function About({ content, title, themes }: AboutProps) {
     const messages = useMessages();
     const resolvedTitle = title || messages.home.about;
 
@@ -50,6 +52,34 @@ export default function About({ content, title }: AboutProps) {
                     {content}
                 </ReactMarkdown>
             </div>
+            {themes && themes.length > 0 && (
+                <div className="mt-6 space-y-5">
+                    {themes.map((theme) => (
+                        <div key={theme.title} className="border-l-[3px] border-neutral-200 pl-5">
+                            <h3 className="text-lg font-serif font-bold text-primary leading-snug">
+                                {theme.link ? (
+                                    <a
+                                        href={theme.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="group transition-colors duration-200 hover:text-accent"
+                                    >
+                                        {theme.title}
+                                        <span aria-hidden="true" className="inline-block ml-1.5 text-neutral-400 transition-transform duration-200 group-hover:translate-x-0.5">›</span>
+                                    </a>
+                                ) : (
+                                    theme.title
+                                )}
+                            </h3>
+                            {theme.description && (
+                                <p className="mt-1.5 text-[0.95rem] italic text-neutral-500 leading-relaxed">
+                                    {theme.description}
+                                </p>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            )}
         </motion.section>
     );
 }

@@ -14,6 +14,12 @@ export interface TextPageConfig extends BasePageConfig {
     source: string;
 }
 
+export interface ResearchTheme {
+    title: string;
+    description?: string;
+    link?: string;
+}
+
 export interface CardItem {
     title: string;
     subtitle?: string;
