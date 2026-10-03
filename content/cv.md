@@ -26,7 +26,8 @@
 ## Service
 
 **Teaching**  
-- Teaching Assistant, CS5340: Uncertainty Modelling, National University of Singapore
+- Teaching Assistant, CS3264: Foundations of Machine Learning, National University of Singapore, 2026–2027
+- Teaching Assistant, CS5340: Uncertainty Modelling in AI, National University of Singapore, 2025–2026
 
 **Reviewer**  
 - HRI, IROS, ICRA

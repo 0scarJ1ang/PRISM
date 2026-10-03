@@ -1,10 +1,17 @@
 type = "card"
 title = "Teaching"
-description = "Courses I have taught or assisted with."
+description = "I am committed to helping students build a strong conceptual foundation through clear explanations and constructive feedback. I aim to create a supportive learning environment that encourages questions, critical thinking, and connections between theory and practice."
+
+[[items]]
+title = "CS3264 Foundations of Machine Learning"
+subtitle = "Teaching Assistant"
+date = "2026–2027"
+content = "Foundations of machine learning, covering core theory and algorithms, supervised and unsupervised learning, and practical methods for learning from data.\n\n[Course details on NUSMods](https://nusmods.com/courses/CS3264/foundations-of-machine-learning)"
+tags = ["Undergraduate", "CS"]
 
 [[items]]
 title = "CS5340 Uncertainty Modelling in AI"
 subtitle = "Teaching Assistant"
-date = "2026"
+date = "2025–2026"
 content = "CS5340 is about how to “represent” and “reason” with uncertainty in a computer."
 tags = ["Master-Level", "CS"]
