@@ -6,6 +6,7 @@ import { Publication } from '@/types/publication';
 import { useMessages } from '@/lib/i18n/useMessages';
 import { Github, Globe } from 'lucide-react';
 import PublicationPreview from '@/components/publications/PublicationPreview';
+import ArxivIcon from '@/components/ui/ArxivIcon';
 
 interface SelectedPublicationsProps {
     publications: Publication[];
@@ -75,8 +76,19 @@ export default function SelectedPublications({ publications, title, enableOnePag
                                         {pub.description}
                                     </p>
                                 )}
-                                {(pub.url || pub.code) && (
+                                {(pub.arxivId || pub.url || pub.code) && (
                                     <div className="flex flex-wrap gap-2 mt-3">
+                                        {pub.arxivId && (
+                                            <a
+                                                href={`https://arxiv.org/abs/${pub.arxivId}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
+                                            >
+                                                <ArxivIcon className="h-3 w-3 mr-1.5 shrink-0" />
+                                                {messages.publications.arxiv}
+                                            </a>
+                                        )}
                                         {pub.url && (
                                             <a
                                                 href={pub.url}

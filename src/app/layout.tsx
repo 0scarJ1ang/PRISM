@@ -100,12 +100,16 @@ function buildLocalizedConfigMaps(
   const navigationByLocale: Record<string, SiteConfig['navigation']> = {};
   const siteTitleByLocale: Record<string, string> = {};
   const lastUpdatedByLocale: Record<string, string | undefined> = {};
+  const buildDate = new Date();
 
   for (const locale of locales) {
     const localizedConfig = getConfig(locale);
     navigationByLocale[locale] = localizedConfig.navigation;
     siteTitleByLocale[locale] = localizedConfig.site.title;
-    lastUpdatedByLocale[locale] = localizedConfig.site.last_updated;
+    // Default to the build date so the footer shows when the site was deployed, not the visitor's current date.
+    lastUpdatedByLocale[locale] =
+      localizedConfig.site.last_updated ??
+      buildDate.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
   return {

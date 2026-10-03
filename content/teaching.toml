@@ -13,5 +13,5 @@ tags = ["Undergraduate", "CS"]
 title = "CS5340 Uncertainty Modelling in AI"
 subtitle = "Teaching Assistant"
 date = "2025–2026"
-content = "CS5340 is about how to “represent” and “reason” with uncertainty in a computer."
+content = "Reasoning under uncertainty with probabilistic graphical models, covering Bayesian and Markov networks, conditional independence, inference, and learning from data."
 tags = ["Master-Level", "CS"]
