@@ -15,6 +15,8 @@ import { Publication } from '@/types/publication';
 import { PublicationPageConfig } from '@/types/page';
 import { cn } from '@/lib/utils';
 import { useMessages } from '@/lib/i18n/useMessages';
+import { Github, Globe } from 'lucide-react';
+import ArxivIcon from '@/components/ui/ArxivIcon';
 
 interface PublicationsListProps {
     config: PublicationPageConfig;
@@ -258,6 +260,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                                                 rel="noopener noreferrer"
                                                 className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
                                             >
+                                                <ArxivIcon className="h-3 w-3 mr-1.5 shrink-0" />
                                                 {messages.publications.arxiv}
                                             </a>
                                         )}
@@ -268,6 +271,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                                                 rel="noopener noreferrer"
                                                 className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
                                             >
+                                                <Globe className="h-3 w-3 mr-1.5 shrink-0" aria-hidden="true" />
                                                 {messages.publications.website}
                                             </a>
                                         )}
@@ -278,6 +282,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                                                 rel="noopener noreferrer"
                                                 className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
                                             >
+                                                <Github className="h-3 w-3 mr-1.5 shrink-0" aria-hidden="true" />
                                                 {messages.publications.code}
                                             </a>
                                         )}
