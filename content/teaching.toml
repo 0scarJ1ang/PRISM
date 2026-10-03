@@ -6,7 +6,7 @@ description = "I am committed to helping students build a strong conceptual foun
 title = "CS3264 Foundations of Machine Learning"
 subtitle = "Teaching Assistant"
 date = "2026–2027"
-content = "Foundations of machine learning, covering core theory and algorithms, supervised and unsupervised learning, and practical methods for learning from data.\n\n[Course details on NUSMods](https://nusmods.com/courses/CS3264/foundations-of-machine-learning)"
+content = "Foundations of machine learning, covering core theory and algorithms, supervised and unsupervised learning, and practical methods for learning from data."
 tags = ["Undergraduate", "CS"]
 
 [[items]]
