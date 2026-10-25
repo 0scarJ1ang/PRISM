@@ -38,6 +38,7 @@ export interface Publication {
   bibtex?: string;
   venue?: string;
   presentation?: string;
+  workshop?: string;
   location?: string;
   awards?: string[];
   featured?: boolean;

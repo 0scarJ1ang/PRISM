@@ -4,6 +4,7 @@ import { parseBibTeX } from '@/lib/bibtexParser';
 import { getProfileLinks, getSiteUrl } from '@/lib/structuredData';
 import type { BasePageConfig, CardPageConfig, PublicationPageConfig, ResearchTheme, TextPageConfig } from '@/types/page';
 import type { Publication } from '@/types/publication';
+import { formatVenue } from '@/lib/venue';
 
 // Plain-text summary of the site for AI assistants (https://llmstxt.org), built from the same content files as the pages.
 export const dynamic = 'force-static';
@@ -22,7 +23,7 @@ function demoteHeadings(markdown: string): string {
 
 function formatPublication(pub: Publication): string {
   const authors = pub.authors.map((author) => `${author.name}${author.isCoAuthor ? '*' : ''}`).join(', ');
-  const venue = [pub.venue || pub.conference || pub.journal, pub.year].filter(Boolean).join(' ');
+  const venue = [formatVenue(pub), pub.workshop].filter(Boolean).join(', ');
   const links = [
     pub.url && `[Website](${pub.url})`,
     pub.arxivId && `[arXiv](https://arxiv.org/abs/${pub.arxivId})`,

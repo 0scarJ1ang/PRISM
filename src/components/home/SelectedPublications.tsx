@@ -7,6 +7,7 @@ import { useMessages } from '@/lib/i18n/useMessages';
 import { Github, Globe } from 'lucide-react';
 import PublicationPreview from '@/components/publications/PublicationPreview';
 import ArxivIcon from '@/components/ui/ArxivIcon';
+import { formatVenue } from '@/lib/venue';
 
 interface SelectedPublicationsProps {
     publications: Publication[];
@@ -66,7 +67,8 @@ export default function SelectedPublications({ publications, title, enableOnePag
                                     ))}
                                 </p>
                                 <p className="text-sm text-neutral-600 dark:text-neutral-500 mb-2">
-                                    {pub.venue || pub.journal || pub.conference} {pub.year}
+                                    {formatVenue(pub)}
+                                    {pub.workshop && <span> · {pub.workshop}</span>}
                                     {pub.presentation && (
                                         <span className="font-semibold text-accent"> · {pub.presentation}</span>
                                     )}

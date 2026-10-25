@@ -17,6 +17,7 @@ import { cn } from '@/lib/utils';
 import { useMessages } from '@/lib/i18n/useMessages';
 import { Github, Globe } from 'lucide-react';
 import ArxivIcon from '@/components/ui/ArxivIcon';
+import { formatVenue } from '@/lib/venue';
 
 interface PublicationsListProps {
     config: PublicationPageConfig;
@@ -223,7 +224,8 @@ export default function PublicationsList({ config, publications, embedded = fals
                                         ))}
                                     </p>
                                     <p className="text-sm font-medium text-neutral-800 dark:text-neutral-600 mb-3">
-                                        {pub.venue || pub.journal || pub.conference} {pub.year}
+                                        {formatVenue(pub)}
+                                        {pub.workshop && <span> · {pub.workshop}</span>}
                                         {pub.presentation && (
                                             <span className="font-semibold text-accent"> · {pub.presentation}</span>
                                         )}
