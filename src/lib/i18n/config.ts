@@ -11,12 +11,16 @@ function uniqueLocales(locales: string[]): string[] {
 }
 
 export function getRuntimeI18nConfig(i18n?: I18nConfig): I18nRuntimeConfig {
+  const enabled = i18n?.enabled ?? false;
   const rawLocales = i18n?.locales && i18n.locales.length > 0 ? i18n.locales : [DEFAULT_LOCALE];
-  const locales = uniqueLocales(rawLocales);
+  const configuredLocales = uniqueLocales(rawLocales);
 
-  const defaultLocale = locales.includes(normalizeLocaleCode(i18n?.default_locale || ''))
+  const defaultLocale = configuredLocales.includes(normalizeLocaleCode(i18n?.default_locale || ''))
     ? normalizeLocaleCode(i18n?.default_locale || '')
-    : locales[0] || DEFAULT_LOCALE;
+    : configuredLocales[0] || DEFAULT_LOCALE;
+
+  // With multi-language off the site has one language, so neither the browser language nor a stored choice can switch it.
+  const locales = enabled ? configuredLocales : [defaultLocale];
 
   const fixedCandidate = normalizeLocaleCode(i18n?.fixed_locale || '');
   const fixedLocale = locales.includes(fixedCandidate) ? fixedCandidate : defaultLocale;
@@ -27,7 +31,7 @@ export function getRuntimeI18nConfig(i18n?: I18nConfig): I18nRuntimeConfig {
   }
 
   return {
-    enabled: i18n?.enabled ?? false,
+    enabled,
     locales,
     defaultLocale,
     mode: i18n?.mode === 'fixed' ? 'fixed' : 'auto',
