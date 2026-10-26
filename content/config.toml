@@ -15,7 +15,7 @@ avatar = "/oscar_jiang_portrait.jpg"
 # Machine-readable facts for search engines and AI assistants (JSON-LD, llms.txt). Not shown on the page.
 alternate_names = ["Puming Jiang", "Oscar Jiang"]
 alumni_of = ["University of Cambridge", "Imperial College London"]
-knows_about = ["Robot Learning", "Reusable Robot Skills", "Imitation Learning", "Generative Robot Policies", "Inference-Time Guidance", "Structural Priors", "Skill Composition", "Embodied AI"]
+knows_about = ["Robot Learning", "Reusable Robot Skills", "Imitation Learning", "Generative Robot Policies", "Inference-Time Guidance", "Structural Priors", "Skill Composition", "Agentic Robot Systems", "Embodied AI"]
 # Google Search Console ownership check: the content="..." value from its HTML tag method.
 google_site_verification = "aLSjp_YCoErw0JgOhe7-SfFHD6SKjpC-JsXU3JaZCbw"
 
