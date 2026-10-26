@@ -1,1 +1,1 @@
-My research focuses on robot learning, with an emphasis on **building good robot policies**: policies that work beyond their demonstrations, and that high-level reasoning can understand and invoke correctly.
+My research focuses on the **reliable reuse of learned robot skills**. Every learned skill works only within some boundary of conditions. I study how to expand that boundary and how to know where it lies, so a robot can tell when a skill can be trusted.

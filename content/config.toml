@@ -1,6 +1,6 @@
 [site]
 title = "Oscar Puming Jiang"
-description = "PhD student at the National University of Singapore working on robot learning: learning, understanding, and composing robot policies."
+description = "PhD student at the National University of Singapore working on the reliable reuse of learned robot skills: expanding and understanding where a learned skill works."
 url = "https://0scarj1ang.github.io"
 favicon = "/favicon.svg"
 
@@ -15,7 +15,7 @@ avatar = "/oscar_jiang_portrait.jpg"
 # Machine-readable facts for search engines and AI assistants (JSON-LD, llms.txt). Not shown on the page.
 alternate_names = ["Puming Jiang", "Oscar Jiang"]
 alumni_of = ["University of Cambridge", "Imperial College London"]
-knows_about = ["Robot Learning", "Imitation Learning", "Generative Robot Policies", "Inference-Time Guidance", "Structural Priors", "Skill Composition", "Embodied AI"]
+knows_about = ["Robot Learning", "Reusable Robot Skills", "Imitation Learning", "Generative Robot Policies", "Inference-Time Guidance", "Structural Priors", "Skill Composition", "Embodied AI"]
 # Google Search Console ownership check: the content="..." value from its HTML tag method.
 google_site_verification = "aLSjp_YCoErw0JgOhe7-SfFHD6SKjpC-JsXU3JaZCbw"
 

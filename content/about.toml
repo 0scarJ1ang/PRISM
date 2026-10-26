@@ -3,9 +3,10 @@ title = "About"
 
 [profile]
 research_interests = [
-  "Embodied AI",
-  "Robot Policies",
-  "Inference Time Guidance"
+  "Reusable Robot Skills",
+  "Generative Policies",
+  "Inference-Time Guidance",
+  "Skill Composition"
 ]
 
 [profile.outreach]
@@ -25,12 +26,12 @@ source = "research.md"
 title = "Research"
 
 [[sections.themes]]
-title = "Policies That Generalize and Adapt"
-description = "A policy is trained once, but its objectives keep changing after deployment. How can it generalize beyond its demonstrations and adapt to new objectives without retraining?"
+title = "Expanding the Skill Boundary"
+description = "A policy is trained once, but new objectives and constraints keep arriving. How can we widen where it works, both by shaping what it learns and by steering it at deployment?"
 
 [[sections.themes]]
-title = "Policies That Planners Can Understand and Compose"
-description = "Planners usually see a skill only through a name or an instruction. How can high-level reasoning understand what a policy can do and where it works, and invoke it correctly?"
+title = "Understanding the Skill Boundary"
+description = "A skill's name says little about where it succeeds. How can we predict where a learned policy works, and state it in a form that planners and agents can use to invoke and compose it correctly?"
 
 [[sections]]
 id = "featured_publications"
