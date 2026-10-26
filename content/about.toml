@@ -10,8 +10,8 @@ research_interests = [
 ]
 
 [profile.outreach]
-text = "If you're an undergrad interested in robotics research but unsure where to start, talk to as many people in the field as you can, including me! I don't have the bandwidth to take on more students right now, but I'm always happy to answer your questions."
-email_label = "Feel free to email me."
+text = "Undergrad curious about robotics research? Talk to as many people in the field as you can, including me! I'm not taking on new students right now, but I'd love to help however I can."
+email_label = "Feel free to email me to arrange a chat."
 
 [[sections]]
 id = "about"
