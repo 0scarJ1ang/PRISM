@@ -30,7 +30,7 @@
 - Teaching Assistant, CS5340: Uncertainty Modelling in AI, National University of Singapore, 2025–2026
 
 **Reviewer**  
-- HRI, IROS, ICRA
+- R:SS, ICRA, IROS, HRI
 
 
 
