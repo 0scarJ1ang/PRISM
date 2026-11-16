@@ -136,6 +136,8 @@ function getHighlightNames(locale?: string): string[] {
   };
 
   addName(baseConfig.author.name);
+  // BibTeX entries may use a shorter form of the name, e.g. "Puming Jiang".
+  baseConfig.seo?.alternate_names?.forEach(addName);
 
   if (runtimeI18n.enabled) {
     runtimeI18n.locales.forEach((localeCode) => {

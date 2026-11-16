@@ -18,6 +18,7 @@ import { useMessages } from '@/lib/i18n/useMessages';
 import { Github, Globe } from 'lucide-react';
 import ArxivIcon from '@/components/ui/ArxivIcon';
 import { formatVenue } from '@/lib/venue';
+import { isLeadAuthored, shortAuthorList } from '@/lib/authorship';
 
 interface PublicationsListProps {
     config: PublicationPageConfig;
@@ -193,51 +194,82 @@ export default function PublicationsList({ config, publications, embedded = fals
                         {messages.publications.noResults}
                     </div>
                 ) : (
-                    filteredPublications.map((pub, index) => (
+                    filteredPublications.map((pub, index) => {
+                        // First-author and co-first-author papers get the full card with a preview;
+                        // other papers get a compact card with a shortened author list.
+                        const lead = isLeadAuthored(pub);
+                        const { shown, etAl } = lead ? { shown: pub.authors, etAl: false } : shortAuthorList(pub.authors);
+                        const venue = (
+                            <>
+                                {formatVenue(pub)}
+                                {pub.workshop && <span> · {pub.workshop}</span>}
+                                {pub.presentation && (
+                                    <span className="font-semibold text-accent"> · {pub.presentation}</span>
+                                )}
+                            </>
+                        );
+                        return (
                         <motion.div
                             key={pub.id}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: 0.1 * index }}
-                            className="bg-white dark:bg-neutral-900 p-6 rounded-xl shadow-sm border border-neutral-200 dark:border-neutral-800 hover:shadow-md transition-all duration-200"
+                            className={cn(
+                                "bg-white dark:bg-neutral-900 rounded-xl shadow-sm border border-neutral-200 dark:border-neutral-800 hover:shadow-md transition-all duration-200",
+                                lead ? "p-6" : "px-6 py-4"
+                            )}
                         >
                             <div className="flex flex-col md:flex-row items-start gap-6">
-                                {pub.preview && (
+                                {lead && pub.preview && (
                                     <PublicationPreview preview={pub.preview} previewVideo={pub.previewVideo} title={pub.title} className="md:w-56 lg:w-64" />
                                 )}
                                 <div className="min-w-0 flex-1">
-                                    <h3 className={`${embedded ? "text-lg" : "text-xl"} font-semibold text-primary mb-2 leading-tight`}>
+                                    <h3 className={cn(
+                                        "font-semibold text-primary",
+                                        lead ? `${embedded ? "text-lg" : "text-xl"} mb-2 leading-tight` : `${embedded ? "text-base" : "text-lg"} mb-1 leading-snug`
+                                    )}>
                                         {pub.title}
                                     </h3>
-                                    <p className={`${embedded ? "text-sm" : "text-base"} text-neutral-600 dark:text-neutral-400 mb-2`}>
-                                        {pub.authors.map((author, idx) => (
+                                    <p className={cn(
+                                        "text-neutral-600 dark:text-neutral-400 mb-2",
+                                        lead && !embedded ? "text-base" : "text-sm"
+                                    )}>
+                                        {shown.map((author, idx) => (
                                             <span key={idx}>
-                                                <span>
-                                                    {author.name}
-                                                </span>
-                                                {author.isCoAuthor && <sup>*</sup>}
-                                                {author.isCorresponding && (
-                                                    <sup>†</sup>
-                                                )}
-                                                {idx < pub.authors.length - 1 && ', '}
+                                                {author ? (
+                                                    <>
+                                                        <span>
+                                                            {author.name}
+                                                        </span>
+                                                        {author.isCoAuthor && <sup>*</sup>}
+                                                        {author.isCorresponding && (
+                                                            <sup>†</sup>
+                                                        )}
+                                                    </>
+                                                ) : '…'}
+                                                {(idx < shown.length - 1 || etAl) && ', '}
                                             </span>
                                         ))}
+                                        {etAl && <span>et al.</span>}
                                     </p>
-                                    <p className="text-sm font-medium text-neutral-800 dark:text-neutral-600 mb-3">
-                                        {formatVenue(pub)}
-                                        {pub.workshop && <span> · {pub.workshop}</span>}
-                                        {pub.presentation && (
-                                            <span className="font-semibold text-accent"> · {pub.presentation}</span>
-                                        )}
-                                    </p>
+                                    {lead && (
+                                        <p className="text-sm font-medium text-neutral-800 dark:text-neutral-600 mb-3">
+                                            {venue}
+                                        </p>
+                                    )}
 
-                                    {pub.description && (
+                                    {lead && pub.description && (
                                         <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
                                             {pub.description}
                                         </p>
                                     )}
 
-                                    <div className="flex flex-wrap gap-2 mt-auto">
+                                    <div className={cn("flex flex-wrap gap-2 mt-auto", !lead && "items-center")}>
+                                        {!lead && (
+                                            <span className="mr-1 text-sm font-medium text-neutral-800 dark:text-neutral-600">
+                                                {venue}
+                                            </span>
+                                        )}
                                         {pub.doi && (
                                             <a
                                                 href={`https://doi.org/${pub.doi}`}
@@ -356,7 +388,8 @@ export default function PublicationsList({ config, publications, embedded = fals
                                 </div>
                             </div>
                         </motion.div>
-                    ))
+                    );
+                    })
                 )}
             </div>
         </motion.div>
